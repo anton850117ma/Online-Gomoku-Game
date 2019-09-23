@@ -63,7 +63,6 @@ namespace MutiServer
 
             union = filename + name;
             label6.Text = union;
-            //label6.Refresh();
             bool b = File.Exists(union);
             if (!b)
             {
@@ -104,8 +103,9 @@ namespace MutiServer
             }
             bmp2 = bmp1;
         }
-        public void InitialChess()
+        public void InitialChess() 
         {
+            // Initialize the chess map
             for (int i = 0; i < BOARDSIZE; i++)
             {
                 for (int j = 0; j < BOARDSIZE; j++)
@@ -114,8 +114,9 @@ namespace MutiServer
                 }
             }
         }
-        public void DrawBoard(Graphics gg)
+        public void DrawBoard(Graphics gg) 
         {
+            // Draw the board. Not used anymore.
             Pen p = new Pen(Brushes.Black, 3.0f);
             for (int i = 0; i <= BOARDSIZE; i++)
             {
@@ -128,9 +129,9 @@ namespace MutiServer
                 gg.DrawLine(p, new Point((i + 1) * 30, 0), new Point((i + 1) * 30, BOARDLENGTH));
             }
         }
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e) 
         {
-
+            // Get user's click and determine the position of the point
             if (test != 1) return;
 
             int xx = e.X, yy = e.Y;
@@ -162,14 +163,11 @@ namespace MutiServer
                 else drawpoint(row, col);
             }
 
-            //string strx = Convert.ToString(e.X);
-            //string stry = Convert.ToString(e.Y);
-            //string union = "X = "+ strx + " Y = " + stry;
-            //label1.Text = union;
             
         }
-        public void drawpoint(int x, int y)
+        public void drawpoint(int x, int y) 
         {
+            // To draw a point on picturebox
             if (chessMap[x,y] == 0)
             {
                 paintx = x + 1;
@@ -378,7 +376,7 @@ namespace MutiServer
             thread = new Thread(new ThreadStart(DoWork));
             thread.Start();
         }
-        public void write(int der)
+        public void write(int der)  // Write the result to file and show it on both sides
         {
             StreamWriter sw = new StreamWriter(union);
             if (der == 1)
@@ -408,14 +406,14 @@ namespace MutiServer
         }
         public void controller() // Check the current status
         {
-            if (start == 1) // Server's turn
+            if (start == 1) 
             {
                 label1.Text = "Your turn!";
                 label1.Refresh();
                 test = 1;
                 timer.Start();
             }
-            else if(start == 2) // Client's turn, wait for client's input
+            else if(start == 2) 
             {
                 label1.Text = "Wait for your opponent!";
                 label1.Refresh();
@@ -423,7 +421,7 @@ namespace MutiServer
                 left = 30;
                 bgwServerread.RunWorkerAsync();
             }
-            else if(start == 3) // Server wins the game
+            else if(start == 3)
             {
                 label1.Text = "You win!";
                 label1.Refresh();
@@ -437,7 +435,7 @@ namespace MutiServer
                 timer.Dispose();
 
             }
-            else if(start == 4) // Server loses the game
+            else if(start == 4)
             {
                 label1.Text = "You lose!";
                 label1.Refresh();
@@ -482,7 +480,7 @@ namespace MutiServer
                 timer.Dispose();
             }
         }
-        public void judge() //Judge if someone wins the game
+        public void judge() //Judge if someone wins the game by scanning the chess map
         {
             int counter = 1, rec = 0;
             for(int i = 0; i < 10; ++i)
