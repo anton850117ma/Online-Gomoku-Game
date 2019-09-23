@@ -406,27 +406,24 @@ namespace MutiServer
                 label6.Refresh();
             }
         }
-        public void controller()
+        public void controller() // Check the current status
         {
-            if (start == 1)
+            if (start == 1) // Server's turn
             {
                 label1.Text = "Your turn!";
                 label1.Refresh();
                 test = 1;
                 timer.Start();
             }
-            else if(start == 2)
+            else if(start == 2) // Client's turn, wait for client's input
             {
                 label1.Text = "Wait for your opponent!";
                 label1.Refresh();
-                //test = 2;
                 timer.Stop();
-                
-                //if(left < 30)timer.Dispose();
                 left = 30;
                 bgwServerread.RunWorkerAsync();
             }
-            else if(start == 3)
+            else if(start == 3) // Server wins the game
             {
                 label1.Text = "You win!";
                 label1.Refresh();
@@ -440,7 +437,7 @@ namespace MutiServer
                 timer.Dispose();
 
             }
-            else if(start == 4)
+            else if(start == 4) // Server loses the game
             {
                 label1.Text = "You lose!";
                 label1.Refresh();
@@ -485,7 +482,7 @@ namespace MutiServer
                 timer.Dispose();
             }
         }
-        public void judge()
+        public void judge() //Judge if someone wins the game
         {
             int counter = 1, rec = 0;
             for(int i = 0; i < 10; ++i)
@@ -551,12 +548,11 @@ namespace MutiServer
                 else if (rec == 2) { win = 2; break; }
             }
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)  // Start the Server
         {
             button3.Enabled = false;
             Server();
-            //time.Elapsed += OnTimedEvent;
-            //time.Start();
+            
         }
     }
 }
