@@ -1,0 +1,19 @@
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\bin\Debug\MutiServer.exe.config
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\bin\Debug\MutiServer.exe
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\bin\Debug\MutiServer.pdb
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\obj\Debug\MutiServer.csprojResolveAssemblyReference.cache
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\obj\Debug\MutiServer.Form1.resources
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\obj\Debug\MutiServer.Properties.Resources.resources
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\obj\Debug\MutiServer.csproj.GenerateResource.Cache
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\obj\Debug\MutiServer.exe
+C:\Users\司波深雪\Documents\MutiServer\MutiServer\obj\Debug\MutiServer.pdb
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\bin\Debug\MutiServer.exe.config
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\bin\Debug\MutiServer.exe
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\bin\Debug\MutiServer.pdb
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.Form1.resources
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.Properties.Resources.resources
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.csproj.GenerateResource.Cache
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.exe
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.pdb
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.csprojAssemblyReference.cache
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiServer\MutiServer\obj\Debug\MutiServer.csproj.CoreCompileInputs.cache
