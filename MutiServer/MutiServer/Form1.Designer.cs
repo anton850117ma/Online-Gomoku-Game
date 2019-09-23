@@ -1,5 +1,6 @@
 ﻿namespace MutiServer
-{
+{   
+    // This is the user interface of my program
     partial class Form1
     {
         /// <summary>
