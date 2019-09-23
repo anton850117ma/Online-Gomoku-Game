@@ -1,0 +1,19 @@
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\bin\Debug\MutiClient.exe.config
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\bin\Debug\MutiClient.exe
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\bin\Debug\MutiClient.pdb
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\obj\Debug\MutiClient.Form1.resources
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\obj\Debug\MutiClient.Properties.Resources.resources
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\obj\Debug\MutiClient.csproj.GenerateResource.Cache
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\obj\Debug\MutiClient.exe
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\obj\Debug\MutiClient.pdb
+C:\Users\司波深雪\Documents\MutiClient\MutiClient\obj\Debug\MutiClient.csprojResolveAssemblyReference.cache
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\bin\Debug\MutiClient.exe.config
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\bin\Debug\MutiClient.exe
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\bin\Debug\MutiClient.pdb
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.Form1.resources
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.Properties.Resources.resources
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.csproj.GenerateResource.Cache
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.exe
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.pdb
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.csprojAssemblyReference.cache
+C:\Users\charles09880\Documents\Visual Studio 2017\Projects\MutiClient\MutiClient\obj\Debug\MutiClient.csproj.CoreCompileInputs.cache
