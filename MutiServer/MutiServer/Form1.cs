@@ -49,12 +49,17 @@ namespace MutiServer
         }
         public void set()
         {
+            // Set up the chess map and timer
             InitialChess();
             time = new System.Timers.Timer(1000);
             timer = new System.Timers.Timer(1000);
         }
         public void file()
         {
+            /*
+            Read the record file according to client's name and show it on window.
+            If the client's name is new to Server, then create a initial file.
+            */
             int final = msg.IndexOf('\0');
             char[] mm = msg.ToCharArray();
             char[] res = new char[final];
@@ -85,7 +90,7 @@ namespace MutiServer
         }
         private void pictureBox1_Paint_1(object sender, PaintEventArgs e)
         {
-
+            // Paint a white or black point to picturebox
             bmp1 = bmp2;
             pictureBox1.Image = bmp1;
             g = Graphics.FromImage(pictureBox1.Image);
@@ -181,6 +186,7 @@ namespace MutiServer
         }
         public void package()
         {
+            // Send a package to the client and change the status
             if(epic == 1)
             {
                 bgwServersend.RunWorkerAsync();
@@ -207,6 +213,7 @@ namespace MutiServer
         }
         public void Server()
         {
+            // Build a TCP connection
             string forshow;
             int cont = rnd.Next(1,10);
             label1.Text = "Wait for a client";
@@ -376,8 +383,9 @@ namespace MutiServer
             thread = new Thread(new ThreadStart(DoWork));
             thread.Start();
         }
-        public void write(int der)  // Write the result to file and show it on both sides
+        public void write(int der)  
         {
+            // Write the result to file and show it on both sides
             StreamWriter sw = new StreamWriter(union);
             if (der == 1)
             {
@@ -404,8 +412,9 @@ namespace MutiServer
                 label6.Refresh();
             }
         }
-        public void controller() // Check the current status
+        public void controller() 
         {
+            // Check the current status
             if (start == 1) 
             {
                 label1.Text = "Your turn!";
@@ -480,8 +489,9 @@ namespace MutiServer
                 timer.Dispose();
             }
         }
-        public void judge() //Judge if someone wins the game by scanning the chess map
+        public void judge() 
         {
+            //Judge if someone wins the game by scanning the chess map
             int counter = 1, rec = 0;
             for(int i = 0; i < 10; ++i)
             {
@@ -546,8 +556,9 @@ namespace MutiServer
                 else if (rec == 2) { win = 2; break; }
             }
         }
-        private void button3_Click(object sender, EventArgs e)  // Start the Server
+        private void button3_Click(object sender, EventArgs e)  
         {
+            // Start the Server
             button3.Enabled = false;
             Server();
             
