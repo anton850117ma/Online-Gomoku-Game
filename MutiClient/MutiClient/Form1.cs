@@ -76,7 +76,7 @@ namespace MutiClient
                     chessMap[i, j] = 0;
                 }
             }
-            //this.pictureBox1.Invalidate();
+            
         }
         public void DrawBoard(Graphics g)
         {
@@ -294,6 +294,7 @@ namespace MutiClient
         }
         public void controller(int num, char[] schar)
         {
+            // Check the current status and determine what's next
             if (num == 1)
             {
                 if (schar[0] == '1')
@@ -346,7 +347,7 @@ namespace MutiClient
                     label1.Refresh();
                     timer.Start();
                 }
-                //檢驗是否分出勝負
+                
             }
             else if (num == 3)
             {
@@ -377,12 +378,14 @@ namespace MutiClient
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            // Start the client
             Client();
             if(connect)button3.Enabled = false;
             button3.Refresh();
         }
         private void button4_Click(object sender, EventArgs e)
         {
+            // Show client's name and set status
             username = textBox1.Text;
             label3.Text = "Your Name: " + username;
             label3.Refresh();
