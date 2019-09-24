@@ -17,7 +17,8 @@ using System.IO;
 namespace MutiServer
 {
     public partial class Form1 : Form
-    {
+    {   
+        // used elements
         TcpListener serverSocket = null;
         TcpClient clientSocket = null;
         BackgroundWorker bgwServersend, bgwServerread;
@@ -34,7 +35,6 @@ namespace MutiServer
         Random rnd = new Random();
         Graphics g;
         Bitmap bmp1, bmp2 = new Bitmap(@"C:\FFOutput\newboard.bmp", true);
-        //Image newImage = Image.FromFile(@"C:\FFOutput\white.jpg");
         SolidBrush blackBrush = new SolidBrush(Color.Black);
         SolidBrush whiteBrush = new SolidBrush(Color.White);
         Thread thread, thread2;
@@ -57,8 +57,8 @@ namespace MutiServer
         public void file()
         {
             /*
-            Read the record file according to client's name and show it on window.
-            If the client's name is new to Server, then create a initial file.
+            Read the record file according to client's name and show it on the window.
+            If the client's name is new to Server, then create a new file with client's name.
             */
             int final = msg.IndexOf('\0');
             char[] mm = msg.ToCharArray();
@@ -90,7 +90,7 @@ namespace MutiServer
         }
         private void pictureBox1_Paint_1(object sender, PaintEventArgs e)
         {
-            // Paint a white or black point to picturebox
+            // Paint a white or black piece onto picturebox
             bmp1 = bmp2;
             pictureBox1.Image = bmp1;
             g = Graphics.FromImage(pictureBox1.Image);
@@ -121,7 +121,7 @@ namespace MutiServer
         }
         public void DrawBoard(Graphics gg) 
         {
-            // Draw the board. Not used anymore.
+            // Draw the board. Not used anymore after producing newboard.bmp
             Pen p = new Pen(Brushes.Black, 3.0f);
             for (int i = 0; i <= BOARDSIZE; i++)
             {
@@ -136,7 +136,7 @@ namespace MutiServer
         }
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e) 
         {
-            // Get user's click and determine the position of the point
+            // Get user's click and determine the position of the piece
             if (test != 1) return;
 
             int xx = e.X, yy = e.Y;
@@ -186,7 +186,7 @@ namespace MutiServer
         }
         public void package()
         {
-            // Send a package to the client and change the status
+            // Prepare to send a message to the client and change the status
             if(epic == 1)
             {
                 bgwServersend.RunWorkerAsync();
@@ -204,7 +204,8 @@ namespace MutiServer
             }
         }
         public void changecontrol(int pos, int num)
-        {
+        {   
+            // Changing status and record it into message
             char[] chars = control.ToCharArray();
             string str = Convert.ToString(num);
             char a = Convert.ToChar(str);
@@ -225,7 +226,7 @@ namespace MutiServer
                 clientSocket = serverSocket.AcceptTcpClient();
                 if (clientSocket != null) break;
             }
-
+            // Show client's information after connection
             SslStream sslStream = new SslStream(clientSocket.GetStream(), true);
             IPEndPoint cpoint = clientSocket.Client.RemoteEndPoint as IPEndPoint;
             string cip = cpoint.Address.ToString();
@@ -240,13 +241,10 @@ namespace MutiServer
             timer.Elapsed += OnTimedEvent2;
             time.Elapsed += OnTimedEvent;
             time.Start();
-
-
+            
+            // Begin the game
             if (cont % 2 == 1) { start = 1; forshow = "MS: You go first!"; }
             else { start = 2; forshow = "MS: You go after client"; }
-            //MessageBox.Show(forshow);
-            //label1.Text = forshow;
-            //label1.Refresh();
             Intbgw();
             bgwServerread.RunWorkerAsync();
             changecontrol(0,start);
@@ -254,6 +252,7 @@ namespace MutiServer
         }
         public void Intbgw()
         {
+            // Start backgroundworker to handel read/write events and their after-effects
             bgwServerread = new BackgroundWorker();
             bgwServersend = new BackgroundWorker();
             bgwServerread.DoWork += new DoWorkEventHandler(bgwServerDoRead);
@@ -262,7 +261,8 @@ namespace MutiServer
             bgwServersend.RunWorkerCompleted += new RunWorkerCompletedEventHandler(SendCom);
         }
         public void bgwServerDoRead(object sender, DoWorkEventArgs e)
-        {
+        {   
+            // Read stream to buffer
             try
             {
                 NetworkStream networkStream = clientSocket.GetStream();
@@ -280,7 +280,12 @@ namespace MutiServer
             }
         }
         public void ReadCom(object sender, RunWorkerCompletedEventArgs e)
-        {
+        {   
+            /*
+            After reading from the stream, check the current status.
+            If it is just connecting, then show the client's name and go to next status. 
+            Otherwise, decode the message and update the chess map and check if someone wins.
+            */
             if (e.Error == null && !e.Cancelled)
             {
                 if(first == 0)
@@ -318,7 +323,8 @@ namespace MutiServer
             }
         }
         public void bgwServerDoSend(object sender, DoWorkEventArgs e)
-        {
+        {   
+            // Send encoded message to client
             try
             {
                 NetworkStream netStream = clientSocket.GetStream();
@@ -334,7 +340,8 @@ namespace MutiServer
             }
         }
         public void SendCom(object sender, RunWorkerCompletedEventArgs e)
-        {
+        {   
+            // After sending messages, go back to main control
             if (e.Error == null && !e.Cancelled)
             {
                 if(start == 1 || start == 2 || start == 3 || start == 4)controller();
@@ -342,6 +349,7 @@ namespace MutiServer
         }
         public void UpdateForm2(string param2)
         {
+            // Update the window when countdown timer is running and make end to Server's turn when timer counts to zero
             left--;
             label7.Text = "Timeleft: " + left + param2;
             label7.Refresh();
@@ -358,28 +366,33 @@ namespace MutiServer
             }
         }
         public void DoWork2()
-        {
+        {   
+            // Use Invoke to update the window
             sInvoke mi2 = new sInvoke(UpdateForm2);
             Invoke(mi2, new Object[] { " seconds" });
         }
         public void OnTimedEvent2(object source, System.Timers.ElapsedEventArgs e)
-        {
+        {   
+            // Start a thread for countdown timer
             thread2 = new Thread(new ThreadStart(DoWork2));
             thread2.Start();
         }
         public void UpdateForm(string param1)
-        {
+        {   
+            // Update the window when the timer is running
             timecount++;
             label5.Text ="Total: " +timecount + param1;
             label5.Refresh();
         }
         public void DoWork()
-        {
+        {   
+            // Use Invoke to update the window
             MyInvoke mi = new MyInvoke(UpdateForm);
             Invoke(mi, new Object[] {" seconds"});
         }
         public void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
+            // Start a thread for the timer
             thread = new Thread(new ThreadStart(DoWork));
             thread.Start();
         }
@@ -414,7 +427,7 @@ namespace MutiServer
         }
         public void controller() 
         {
-            // Check the current status
+            // Check the current status and determine what's next
             if (start == 1) 
             {
                 label1.Text = "Your turn!";
