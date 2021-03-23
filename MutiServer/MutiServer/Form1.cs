@@ -365,17 +365,12 @@ namespace MutiServer
                 package();
             }
         }
-        public void DoWork2()
-        {   
-            // Use Invoke to update the window
-            sInvoke mi2 = new sInvoke(UpdateForm2);
-            Invoke(mi2, new Object[] { " seconds" });
-        }
         public void OnTimedEvent2(object source, System.Timers.ElapsedEventArgs e)
         {   
             // Start a thread for countdown timer
             // thread2 = new Thread(new ThreadStart(DoWork2));
             // thread2.Start();
+            // Use Invoke to update the window
             sInvoke mi2 = new sInvoke(UpdateForm2);
             Invoke(mi2, new Object[] { " seconds" });
         }
@@ -386,17 +381,12 @@ namespace MutiServer
             label5.Text ="Total: " +timecount + param1;
             label5.Refresh();
         }
-        public void DoWork()
-        {   
-            // Use Invoke to update the window
-            MyInvoke mi = new MyInvoke(UpdateForm);
-            Invoke(mi, new Object[] {" seconds"});
-        }
         public void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             // Start a thread for the timer
             // thread = new Thread(new ThreadStart(DoWork));
             // thread.Start();
+            // Use Invoke to update the window
             MyInvoke mi = new MyInvoke(UpdateForm);
             Invoke(mi, new Object[] {" seconds"});
         }
