@@ -374,8 +374,10 @@ namespace MutiServer
         public void OnTimedEvent2(object source, System.Timers.ElapsedEventArgs e)
         {   
             // Start a thread for countdown timer
-            thread2 = new Thread(new ThreadStart(DoWork2));
-            thread2.Start();
+            // thread2 = new Thread(new ThreadStart(DoWork2));
+            // thread2.Start();
+            sInvoke mi2 = new sInvoke(UpdateForm2);
+            Invoke(mi2, new Object[] { " seconds" });
         }
         public void UpdateForm(string param1)
         {   
@@ -393,8 +395,10 @@ namespace MutiServer
         public void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             // Start a thread for the timer
-            thread = new Thread(new ThreadStart(DoWork));
-            thread.Start();
+            // thread = new Thread(new ThreadStart(DoWork));
+            // thread.Start();
+            MyInvoke mi = new MyInvoke(UpdateForm);
+            Invoke(mi, new Object[] {" seconds"});
         }
         public void write(int der)  
         {
