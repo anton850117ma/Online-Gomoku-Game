@@ -266,15 +266,12 @@ namespace MutiClient
                 package();
             }
         }
-        public void DoWork2()
-        {
-            sInvoke mi2 = new sInvoke(UpdateForm2);
-            Invoke(mi2, new Object[] { " seconds" });
-        }
         public void OnTimedEvent2(object source, System.Timers.ElapsedEventArgs e)
         {
-            thread2 = new Thread(new ThreadStart(DoWork2));
-            thread2.Start();
+            // thread2 = new Thread(new ThreadStart(DoWork2));
+            // thread2.Start();
+            sInvoke mi2 = new sInvoke(UpdateForm2);
+            Invoke(mi2, new Object[] { " seconds" });
         }
         public void UpdateForm(string param1)
         {
@@ -282,15 +279,12 @@ namespace MutiClient
             label4.Text = "Total: " + timecount + param1;
             label4.Refresh();
         }
-        public void DoWork()
-        {
-            MyInvoke mi = new MyInvoke(UpdateForm);
-            Invoke(mi, new Object[] { " seconds" });
-        }
         public void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
-            thread = new Thread(new ThreadStart(DoWork));
-            thread.Start();
+            // thread = new Thread(new ThreadStart(DoWork));
+            // thread.Start();
+            MyInvoke mi = new MyInvoke(UpdateForm);
+            Invoke(mi, new Object[] { " seconds" });
         }
         public void controller(int num, char[] schar)
         {
